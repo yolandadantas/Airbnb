@@ -1,6 +1,6 @@
 # Instructions
-In this exercise you will create a MLflow component that preprocess the data. 
-It implements in a reusable way the steps we implemented in the EDA notebook in the previous step (fetch_data).
+In this step you will create a MLflow component that preprocess the data. 
+It implements in a reusable way the steps we implemented in the EDA notebook.
 
 ## Run Steps
 
