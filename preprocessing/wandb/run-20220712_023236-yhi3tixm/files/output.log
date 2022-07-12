@@ -1,0 +1,9 @@
+
+12-07-2022 02:32:41 Dowloading artifact
+12-07-2022 02:32:46 Preprocessing dataset
+Traceback (most recent call last):
+  File "/Users/yolandademacedodantas/Documents/GitHub/Airbnb/preprocessing/run.py", line 139, in <module>
+    process_args(ARGS)
+  File "/Users/yolandademacedodantas/Documents/GitHub/Airbnb/preprocessing/run.py", line 74, in process_args
+    clean_data = preprocess_data(raw_data)
+NameError: name 'raw_data' is not defined
