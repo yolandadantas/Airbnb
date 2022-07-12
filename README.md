@@ -45,7 +45,7 @@ Cada pasta contém um arquivo README com comandos que devem ser executados.
 
 ### 1- Análise exploratória de dados no jupyterlab
 
-Na pasta *EDA*, o é gerado o artefato row_data.csv no wandb e são realizadas várias análises para conhecer melhor os dados trabalhados através de um notebook.
+Na pasta *EDA*, é gerado o artefato row_data.csv no wandb e são realizadas várias análises para conhecer melhor os dados trabalhados através de um notebook.
 
 ### 2- Pré-processamento
 
