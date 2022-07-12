@@ -43,6 +43,8 @@ def preprocess_data(raw_data: pd.DataFrame) -> pd.DataFrame:
     LOGGER.info("Treating price columns from str to float")
     clean_data['price'] = clean_data['price'].apply(
         lambda x: float(x[1:].replace(',', '')) if isinstance(x, str) else x)
+    
+    return clean_data
 
 def process_args(args):
     """Process args passed by command line
