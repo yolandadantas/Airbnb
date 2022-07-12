@@ -2,7 +2,7 @@
 
 <img src="images/header.png" alt="mlops pipeline">
 
-Este projeto está sendo desenvolvido como atividade prática na disciplina IMD1123 (Tópicos Especiais em Inteligência Computacional / MLOps) e visa implementar um pipeline de MLOps para modelagem preditiva de preços de imóveis do Rio de Janeiro anunciados no Airbnb (dez/2021).
+Este projeto está sendo desenvolvido como atividade prática na disciplina IMD1123 (Tópicos Especiais em Inteligência Computacional / MLOps) e visa implementar um pipeline de MLOps para modelagem preditiva de preços de imóveis do Rio de Janeiro anunciados no Airbnb (dez/2021). [Link para download do dataset](http://data.insideairbnb.com/brazil/rj/rio-de-janeiro/2021-12-24/data/listings.csv.gz)
 
 As seguintes etapas serāo desenvolvidas:
 - Fetch Data :heavy_check_mark:
