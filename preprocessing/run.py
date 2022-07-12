@@ -29,17 +29,10 @@ def preprocess_data(raw_data: pd.DataFrame) -> pd.DataFrame:
     columns = ['accommodates', 'bedrooms',
                'beds', 'price', 'number_of_reviews', 
                'minimum_nights', 'maximum_nights']
-    return raw_data[columns]
+    raw_data = raw_data[columns]
 
-def remove_duplicated(raw_data: pd.DataFrame) -> pd.DataFrame:
-    """Drop duplicated rows in raw_data
-    Args:
-        raw_data(pd.DataFrame): DataFrame to drop duplicated rows
-    Returns:
-        (pd.DataFrame): DataFrame with no duplicated rows
-    """
-    LOGGER.info("Dropping duplicated rows")
-    return raw_data.drop_duplicates(ignore_index=True)
+    LOGGER.info("Dropping duplicates")
+    raw_data = raw_data.drop_duplicates(ignore_index=True)
 
     LOGGER.info("Treating missing values")
     columns_drop = ['accommodates', 'bedrooms',
@@ -47,8 +40,9 @@ def remove_duplicated(raw_data: pd.DataFrame) -> pd.DataFrame:
 
     clean_data = raw_data.dropna(subset=columns_drop).reset_index(drop=True)
 
-    return clean_data
-
+    LOGGER.info("Treating price columns from str to float")
+    clean_data['price'] = clean_data['price'].apply(
+        lambda x: float(x[1:].replace(',', '')) if isinstance(x, str) else x)
 
 def process_args(args):
     """Process args passed by command line
@@ -60,6 +54,7 @@ def process_args(args):
         args.artifact_description: Description for the artifact
         args.project_name: Name of WandB project you want to access/create
     """
+    # create a new wandb project
     run = wandb.init(project=args.project_name,
                      job_type="preproccess_data")
 
@@ -70,11 +65,9 @@ def process_args(args):
     # create a dataframe from the artifact path
     df = pd.read_csv(artifact_path)
 
-    LOGGER.info("Preprocessing dataset")
-    clean_data = preprocess_data(raw_data)
-
-    # create a dataframe from the artifact path
-    df = pd.read_csv(artifact_path)
+    # Delete duplicated rows
+    LOGGER.info("Dropping duplicates")
+    df.drop_duplicates(inplace=True)
 
     # Generate a "clean data file"
     filename = "preprocessed_data.csv"
@@ -129,8 +122,7 @@ if __name__ == "__main__":
         "--artifact_description",
         type=str,
         help="Description for the artifact",
-        default="",
-        required=False
+        required=True
     )
     # get arguments
     ARGS = PARSER.parse_args()
