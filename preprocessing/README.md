@@ -8,5 +8,6 @@ It implements in a reusable way the steps we implemented in the EDA notebook in 
 mlflow run . -P input_artifact="week08_eda/raw_data.csv:latest" \
              -P artifact_name="preprocessed_data.csv" \
              -P artifact_type="clean_data" \
-             -P artifact_description="Data after preprocessing"
+             -P artifact_description="Data after preprocessing"\
+             -P project_name="airbnb_preprocessing"
 ```

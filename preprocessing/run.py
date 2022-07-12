@@ -18,7 +18,7 @@ logging.basicConfig(level=logging.INFO,
 LOGGER = logging.getLogger()
 
 
-def preprocess_data(raw_data):
+def preprocess_data(raw_data: pd.DataFrame) -> pd.DataFrame:
     """Return the processed DataFrame
     Args:
         raw_data(pd.DataFrame): DataFrame to clean data
@@ -29,10 +29,17 @@ def preprocess_data(raw_data):
     columns = ['accommodates', 'bedrooms',
                'beds', 'price', 'number_of_reviews', 
                'minimum_nights', 'maximum_nights']
-    raw_data = raw_data[columns]
+    return raw_data[columns]
 
-    LOGGER.info("Dropping duplicates")
-    raw_data = raw_data.drop_duplicates(ignore_index=True)
+def remove_duplicated(raw_data: pd.DataFrame) -> pd.DataFrame:
+    """Drop duplicated rows in raw_data
+    Args:
+        raw_data(pd.DataFrame): DataFrame to drop duplicated rows
+    Returns:
+        (pd.DataFrame): DataFrame with no duplicated rows
+    """
+    LOGGER.info("Dropping duplicated rows")
+    return raw_data.drop_duplicates(ignore_index=True)
 
     LOGGER.info("Treating missing values")
     columns_drop = ['accommodates', 'bedrooms',
@@ -65,6 +72,9 @@ def process_args(args):
 
     LOGGER.info("Preprocessing dataset")
     clean_data = preprocess_data(raw_data)
+
+    # create a dataframe from the artifact path
+    df = pd.read_csv(artifact_path)
 
     # Generate a "clean data file"
     filename = "preprocessed_data.csv"
@@ -119,9 +129,9 @@ if __name__ == "__main__":
         "--artifact_description",
         type=str,
         help="Description for the artifact",
-        required=True
+        default="",
+        required=False
     )
-    
     # get arguments
     ARGS = PARSER.parse_args()
 
