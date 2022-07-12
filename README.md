@@ -7,8 +7,8 @@ Este projeto está sendo desenvolvido como atividade prática na disciplina IMD1
 As seguintes etapas serāo desenvolvidas:
 - Fetch Data :heavy_check_mark:
 - Pre-processing :heavy_check_mark:
-- Data Checks :heavy_check_mark:
-- Data Segregation (train/test splitting) :heavy_check_mark:
+- Data Checks 
+- Data Segregation (train/test splitting) 
 - Define and create a ML model
 - Train and validation
 - Test
@@ -53,8 +53,8 @@ Na pasta *preprocessing*, é realizada a limpeza dos dados conforme a análise r
 
 ### 3- Segregação dos dados
 
-Na pasta *split_data*, é feita a separação de dados em treino e teste.
+...
 
 ### 4- Checagem dos dados
 
-Na pasta *data_checks*,realizamos testes de hipótese para checar se os dados falseiam ou falham em falsear as hipóteses levantadas.
+...
