@@ -29,23 +29,20 @@ def preprocess_data(raw_data: pd.DataFrame) -> pd.DataFrame:
     columns = ['accommodates', 'bedrooms',
                'beds', 'price', 'number_of_reviews', 
                'minimum_nights', 'maximum_nights']
-    return raw_data[columns]
+    raw_data = raw_data[columns]
 
-def remove_duplicated(raw_data: pd.DataFrame) -> pd.DataFrame:
-    """Drop duplicated rows in raw_data
-    Args:
-        raw_data(pd.DataFrame): DataFrame to drop duplicated rows
-    Returns:
-        (pd.DataFrame): DataFrame with no duplicated rows
-    """
-    LOGGER.info("Dropping duplicated rows")
-    return raw_data.drop_duplicates(ignore_index=True)
+    LOGGER.info("Dropping duplicates")
+    raw_data = raw_data.drop_duplicates(ignore_index=True)
 
     LOGGER.info("Treating missing values")
     columns_drop = ['accommodates', 'bedrooms',
                     'beds', 'price', 'number_of_reviews']
-
+    
     clean_data = raw_data.dropna(subset=columns_drop).reset_index(drop=True)
+
+    LOGGER.info("Treating price columns from str to float")
+    clean_data['price'] = clean_data['price'].apply(
+    lambda x: float(x[1:].replace(',', '')) if isinstance(x, str) else x)
 
     return clean_data
 
@@ -68,17 +65,14 @@ def process_args(args):
     artifact_path = artifact.file()
 
     # create a dataframe from the artifact path
-    df = pd.read_csv(artifact_path)
+    raw_data = pd.read_csv(artifact_path)
 
     LOGGER.info("Preprocessing dataset")
     clean_data = preprocess_data(raw_data)
 
-    # create a dataframe from the artifact path
-    df = pd.read_csv(artifact_path)
-
     # Generate a "clean data file"
     filename = "preprocessed_data.csv"
-    df.to_csv(filename,index=False)
+    clean_data.to_csv(filename,index=False)
 
     # Create a new artifact and configure with the necessary arguments"
     LOGGER.info("Creating W&B artifact")

@@ -1,0 +1,9 @@
+
+12-07-2022 02:49:30 Dowloading artifact
+12-07-2022 02:49:33 Preprocessing dataset
+12-07-2022 02:49:33 Selecting columns
+12-07-2022 02:49:33 Dropping duplicates
+12-07-2022 02:49:33 Treating missing values
+12-07-2022 02:49:33 Treating price columns from str to float
+12-07-2022 02:49:33 Creating W&B artifact
+12-07-2022 02:49:33 Logging artifact to wandb project
