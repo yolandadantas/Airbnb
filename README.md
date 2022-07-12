@@ -1,4 +1,4 @@
-# Modelagem de dados do Airbnb com aplicação de MLOps 
+# Modelagem de dados do Airbnb com aplicação de MLOps
 
 <img src="images/header.png" alt="mlops pipeline">
 
