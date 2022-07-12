@@ -43,22 +43,6 @@ def preprocess_data(raw_data):
     return clean_data
 
 
-def treat_bathroom_text(value):
-    """Treat bathroom_text column
-    Args:
-        value(Any): Value from bathroom_text column
-    Returns:
-        (float): the float treated value for bathroom_text item
-    """
-    if not isinstance(value, str):
-        return value
-
-    try:
-        return float(value.split(' ')[0])
-    except ValueError as excep:
-        LOGGER.debug(excep)
-        return 0.5
-
 def process_args(args):
     """Process args passed by command line
     Args:
