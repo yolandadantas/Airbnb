@@ -1,9 +1,0 @@
-name: clean_data
-channels:
-  - conda-forge
-  - defaults
-dependencies:
-  - pandas=1.4.3
-  - pip=22.1.2
-  - pip:
-      - wandb==0.12.18
