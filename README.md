@@ -39,7 +39,7 @@ conda activate mlops
 
 ### 1- Análise exploratória de dados no jupyterlab
 
-Na pasta *EDA*, realizamos o download do banco que será armazenado na forma de artefato row_data.csv no wand, além de executarmos várias análises, através de um notebook, para conhecer melhor os dados trabalhados. Basta executar o comando informado no arquivo README.
+Na pasta *EDA*, realizamos o download do banco que será armazenado na forma de artefato row_data.csv no wandb, além de executarmos várias análises, através de um notebook, para conhecer melhor os dados trabalhados. Basta executar o comando informado no arquivo README.
 
 ```
 mlflow run .
